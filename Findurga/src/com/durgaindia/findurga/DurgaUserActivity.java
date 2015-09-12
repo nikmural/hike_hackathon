@@ -196,32 +196,35 @@ public class DurgaUserActivity extends Activity {
 			HttpEntity entity = response.getEntity();
             String responseString = EntityUtils.toString(entity, "UTF-8");
             Log.i("Sonika",responseString);
+            JSONObject obj = null;
             try {
-				JSONObject obj=new JSONObject(responseString);
+				obj=new JSONObject(responseString);
+				Log.i("Sonika","obj"+ obj);
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-            /*ArrayList<User> durgalist=new ArrayList<User>();
+            ArrayList<User> durgalist=new ArrayList<User>();
             Iterator<String> keys = obj.keys();
+            Log.i("Sonika","Keys"+ keys);
             while(keys.hasNext()){
                 String key = keys.next();
+                
                 String val = null;
                 try{
-                    JSONObject value = json.getJSONObject(key);
-                    parse(value,out);
+                    //JSONObject value = obj.getJSONObject(key);
+                    val = obj.getString(key);
+                    Log.i("Sonika", "key"+key+"val"+val);
                 }catch(Exception e){
-                    val = json.getString(key);
-                }
 
-                if(val != null){
-                    out.put(key,val);
                 }
-            }*/
+               User user = new User();
+                user.setUserId(key);
+                user.setContactNumber(Long.parseLong(val));
+                durgalist.add(user);
+            }
 			
-			//Log.i(TAG, response.getEntity().getContent() + "");
-			List<User> userList = new ArrayList<User>();
-			return userList;
+			return durgalist;
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -238,10 +241,9 @@ public class DurgaUserActivity extends Activity {
 			User user2 = new User("nik", "nik", 1, 9945318605L);
 
 			List<User> userList = new ArrayList<User>();
-			userList.add(user1);
-			userList.add(user2);// sendSearchRequest();
-		    sendSearchRequest(params[0]);
-			
+			//userList.add(user1);
+			//userList.add(user2);// sendSearchRequest();
+			userList = sendSearchRequest(params[0]);			
 			return userList;
 		}
 
@@ -316,7 +318,7 @@ public class DurgaUserActivity extends Activity {
 			@Override
 			public int getCount() {
 				// TODO Auto-generated method stub
-				return usrList.size();
+				return 3;
 			}
 		};
 		mUserList.setVisibility(View.VISIBLE);
