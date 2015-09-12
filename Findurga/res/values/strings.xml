@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Findurga</string>
+    <string name="login_button_name">Login</string>
+    <string name="register_button_name">Register</string>
+    <string name="welcome">Welcome </string>
+    <string name="find_durga">Find Durga</string>
+    <string name="action_settings">Settings</string>
+    <string name="user_id">User ID :</string>
+    <string name="password">Password :</string>
+    <string name="contact">Contact :</string>
+    <string name="user_id_hint">Enter Email ID</string>
+    <string name="password_hint">Enter password</string>
+    <string name="contact_hint">Enter contact no.</string>
+    <string name="register_button">Go</string>
+    <string name="user">User</string>
+    <string name="durga">Durga</string>
+    <string name="input_error">Please enter all information</string>
+
+</resources>
